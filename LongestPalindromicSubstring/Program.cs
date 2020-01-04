@@ -6,34 +6,43 @@ namespace LongestPalindromicSubstring
     {
         static void Main(string[] args)
         {
-            string possiblePalindrome = "abba";
+            string possiblePalindrome = "abbaddddcX1XcDdaavbvffgrrea";
 
             Solution s = new Solution();
 
-            //Console.WriteLine($"abba: {s.IsPalindrome("abba")}");
-            //Console.WriteLine($"abb: {s.IsPalindrome("abb")}");
-            //Console.WriteLine($"b: {s.IsPalindrome("b")}");
+            Console.WriteLine(s.LongestPalindrome(possiblePalindrome));
         }
-
-       
-
-        //public static string LongestPalindrome(string s)
-        //{
-
-        //}
     }
 
     public class Solution
     {
         public string LongestPalindrome(string str)
         {
+            string longestPalindrome = "";
+
             for (int i = 0; i < str.Length; i++)
             {
+                if ((str.Length - i) < longestPalindrome.Length) break;
 
+                for (int j = 1; j <= str.Length - i; j++)
+                {
+                    if (j < longestPalindrome.Length) continue;
+
+                    string possiblePalindrome = str.Substring(i, j);
+                    
+                    if (IsPalindrome(possiblePalindrome)) {
+                        string palindrome = possiblePalindrome;
+
+                        if (palindrome.Length > longestPalindrome.Length)
+                        {
+                            longestPalindrome = palindrome;
+                        }
+                    } 
+
+                } 
             }
-            str.Substring()
 
-            return null;
+            return longestPalindrome;
         }
 
         private bool IsPalindrome(string possiblePalindrome)
