@@ -6,22 +6,25 @@ namespace LongestPalindromicSubstring
 {
     class Solution2
     {
-        public string LongestPalindrome(string strToCheckForPalindrome)
-        {
-            if (strToCheckForPalindrome == null) return "";
+        private string strToCheckForPalindrome;
+        private string longestPalindrome = "";
 
-            string longestPalindorme = "";
+        public string LongestPalindrome(string str)
+        {
+            strToCheckForPalindrome = str;
+
+            if (strToCheckForPalindrome == null) return "";
 
             for (int i = 0; i < strToCheckForPalindrome.Length; i++)
             {
                 int first, last;
                 first = last = i;
 
-                string palindrome = FindLongestPalindrome(strToCheckForPalindrome, first, last);
+                string palindrome = FindLongestPalindrome(first, last);
 
-                if (palindrome.Length > longestPalindorme.Length)
+                if (palindrome.Length > longestPalindrome.Length)
                 {
-                    longestPalindorme = palindrome;
+                    longestPalindrome = palindrome;
                 }
 
                 if (i + 1 >= strToCheckForPalindrome.Length) continue;
@@ -30,18 +33,18 @@ namespace LongestPalindromicSubstring
                 first = i;
                 last = i + 1;
 
-                palindrome = FindLongestPalindrome(strToCheckForPalindrome, first, last);
+                palindrome = FindLongestPalindrome(first, last);
 
-                if (palindrome.Length > longestPalindorme.Length)
+                if (palindrome.Length > longestPalindrome.Length)
                 {
-                    longestPalindorme = palindrome;
+                    longestPalindrome = palindrome;
                 }
             }
 
-            return longestPalindorme;
+            return longestPalindrome;
         }
 
-        private string FindLongestPalindrome(string strToCheckForPalindrome, int first, int last)
+        private string FindLongestPalindrome(int first, int last)
         {
             while (TryNextFirstAndLast(first, last, strToCheckForPalindrome, out int nextFirst, out int nextLast)
                                 && strToCheckForPalindrome[nextFirst] == strToCheckForPalindrome[nextLast])
