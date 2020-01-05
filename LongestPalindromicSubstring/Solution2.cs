@@ -11,40 +11,42 @@ namespace LongestPalindromicSubstring
 
         public string LongestPalindrome(string str)
         {
+            if (str == null) return "";
+            
             strToCheckForPalindrome = str;
-
-            if (strToCheckForPalindrome == null) return "";
 
             for (int i = 0; i < strToCheckForPalindrome.Length; i++)
             {
-                int first, last;
-                first = last = i;
-
-                string palindrome = FindLongestPalindrome(first, last);
-
-                if (palindrome.Length > longestPalindrome.Length)
-                {
-                    longestPalindrome = palindrome;
-                }
-
-                if (i + 1 >= strToCheckForPalindrome.Length) continue;
-                if (strToCheckForPalindrome[i] != strToCheckForPalindrome[i + 1]) continue;
-
-                first = i;
-                last = i + 1;
-
-                palindrome = FindLongestPalindrome(first, last);
-
-                if (palindrome.Length > longestPalindrome.Length)
-                {
-                    longestPalindrome = palindrome;
-                }
+                FindOddLongestPalindrome(i);
+                FindEvenLongestPalindrome(i);
             }
 
             return longestPalindrome;
         }
 
-        private string FindLongestPalindrome(int first, int last)
+        private void FindOddLongestPalindrome(int i)
+        {
+            int first, last;
+            first = last = i;
+
+            FindLongestPalindrome(first, last);
+        }
+
+        private void FindEvenLongestPalindrome(int i)
+        {
+            int first = i;
+            int last = i + 1;
+
+            if (last < strToCheckForPalindrome.Length)
+            {
+                if (strToCheckForPalindrome[first] == strToCheckForPalindrome[last])
+                {
+                    FindLongestPalindrome(first, last);
+                }
+            }
+        }
+
+        private void FindLongestPalindrome(int first, int last)
         {
             while (TryNextFirstAndLast(first, last, strToCheckForPalindrome, out int nextFirst, out int nextLast)
                                 && strToCheckForPalindrome[nextFirst] == strToCheckForPalindrome[nextLast])
@@ -54,7 +56,11 @@ namespace LongestPalindromicSubstring
             }
 
             string palindrome = strToCheckForPalindrome.Substring(first, last - first + 1);
-            return palindrome;
+
+            if (palindrome.Length > longestPalindrome.Length)
+            {
+                longestPalindrome = palindrome;
+            }
         }
 
         private bool TryNextFirstAndLast(int first, int last, string str, out int nextFirst, out int nextLast)

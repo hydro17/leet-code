@@ -13,9 +13,9 @@ namespace LongestPalindromicSubstring
             Solution2 s2 = new Solution2();
 
             Console.WriteLine(s.LongestPalindrome(possiblePalindrome1));
-            Console.WriteLine(s2.LongestPalindrome(possiblePalindrome1));
-
             Console.WriteLine(s.LongestPalindrome(possiblePalindrome2));
+
+            Console.WriteLine(s2.LongestPalindrome(possiblePalindrome1));
             Console.WriteLine(s2.LongestPalindrome(possiblePalindrome2));
         }
     }
