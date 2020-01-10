@@ -6,11 +6,11 @@ namespace SwapNodesInPairs
     {
         static void Main(string[] args)
         {
-            ListNode head = ListGenerator(5);
+            ListNode head = ListGenerator(3);
 
             PrintList(head);
 
-            new Solution().SwapPairs(head);
+            head = new Solution().SwapPairs(head);
 
             PrintList(head);
         }
@@ -22,6 +22,8 @@ namespace SwapNodesInPairs
                 Console.WriteLine(node.val);
                 node = node.next;
             }
+
+            Console.WriteLine("-------------------");
         }
 
         private static ListNode ListGenerator(int nodeCount)

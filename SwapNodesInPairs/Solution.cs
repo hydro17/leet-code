@@ -11,7 +11,7 @@ namespace SwapNodesInPairs
             ListNode beforeFirstNode = null;
             ListNode firstNode = head;
 
-            while (firstNode.next != null)
+            while (firstNode != null && firstNode.next != null)
             {
                 SwapNodes(ref head, beforeFirstNode, firstNode);
                 beforeFirstNode = firstNode;
