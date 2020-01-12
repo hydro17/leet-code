@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LongestPalindromicSubstring", "LongestPalindromicSubstring\LongestPalindromicSubstring.csproj", "{61936743-C8F6-4BDC-A229-2928F353DCB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapNodesInPairs", "SwapNodesInPairs\SwapNodesInPairs.csproj", "{6849BF1C-ACD4-4744-8E36-330BD02142F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwapNodesInPairs", "SwapNodesInPairs\SwapNodesInPairs.csproj", "{6849BF1C-ACD4-4744-8E36-330BD02142F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3Sum", "3Sum\3Sum.csproj", "{497FADEF-5246-4383-8812-4A4D2A4C686D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6849BF1C-ACD4-4744-8E36-330BD02142F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6849BF1C-ACD4-4744-8E36-330BD02142F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6849BF1C-ACD4-4744-8E36-330BD02142F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497FADEF-5246-4383-8812-4A4D2A4C686D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497FADEF-5246-4383-8812-4A4D2A4C686D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497FADEF-5246-4383-8812-4A4D2A4C686D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497FADEF-5246-4383-8812-4A4D2A4C686D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
