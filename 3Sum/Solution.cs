@@ -13,7 +13,40 @@ namespace _3Sum
         {
             Make3ItemSubsets(new List<int>(), nums);
 
-            return _3itemSubsets.Where(list => list.Sum(i => i) == 0).ToList();
+            IList<IList<int>> _3itemSubsetsGivingSum0 = _3itemSubsets.Where(list => list.Sum(i => i) == 0).ToList();
+
+            foreach (List<int> list in _3itemSubsetsGivingSum0)
+            {
+                list.Sort();
+            }
+
+            return RemoveSortedListDuplicates(_3itemSubsetsGivingSum0); ;
+        }
+
+        public IList<IList<int>> RemoveSortedListDuplicates(IList<IList<int>> duplicates)
+        {
+            int idx1 = 0;
+            IList<int> indexesToDelete = new List<int>();
+
+            while (idx1 < duplicates.Count - 1)
+            {
+                for(int idx2 = idx1 + 1; idx2 < duplicates.Count; idx2++)
+                {
+                    if (duplicates[idx1].SequenceEqual(duplicates[idx2])) indexesToDelete.Add(idx2);
+                }
+
+                IEnumerable<int> revIndexesToDelete = indexesToDelete.Reverse();
+
+                foreach(int idx in revIndexesToDelete)
+                {
+                    duplicates.RemoveAt(idx);
+                }
+
+                indexesToDelete.Clear();
+                idx1++;
+            }
+
+            return duplicates;
         }
 
         private void Make3ItemSubsets(IList<int> subset, int[] nums)
@@ -37,5 +70,4 @@ namespace _3Sum
             Make3ItemSubsets(newSubsetWithoutNewItem, numsWithoutOneItem);
         }
     }
-
 }
